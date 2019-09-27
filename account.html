@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+
+<html >
+<head>
+    <meta charset="utf-8" />
+    <title> The Game Shop</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+
+</head>
+
+<body background="Images/background.jpg" onload="verifyLogin()">
+
+    <div style="text-align: center">
+		<br><img src="images/Logo.png" width="300" alt="The Game Shop" class="align-center"><br>
+    </div>
+
+    <div id="menubar">
+        <div class="menu">&nbsp;&nbsp;&nbsp;&nbsp;<a href="Home.html">HOME</a>&nbsp;
+        </div>
+		
+		<div class="menu">&nbsp;&nbsp;&nbsp;<a href="PSgames.html">PS4 GAMES</a>
+        </div>
+		
+		<div class="menu">&nbsp;&nbsp;&nbsp;<a href="PCgames.html">PC GAMES</a>
+        </div>
+		
+        <div class="menu">&nbsp;&nbsp;&nbsp;<a href="upcoming.html">UPCOMING GAMES</a>
+        </div>
+
+        <div class="menu"><a href="account.html">ACCOUNT</a>
+			<ul>
+            <li><a href="cart.html">Your Cart</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div id="main_body">
+        <section id="account_body">
+
+            <article>
+                <p id="account" style="font-weight: bold"><i></i></p>
+                <fieldset><legend>Personal Details</legend>
+                    
+                    
+                    <p id="personaldetails"><br>
+                        
+                    <p id="Addressdetails"><br>
+                         
+                    <p id="carddetails"><br>
+                    
+                </fieldset>
+                <br><button id="deletebutton" onclick="deleteAccount()">Delete Account</button>
+                <button id="changesbutton" onclick="validatePass()">Make Changes</button><br><br>
+ 
+            </div>
+
+
+                <br style="clear: left" >
+
+            </article>
+
+        </section>
+          
+        <!--Footer bar with social media links.-->
+		<div id="footer_login">	
+			<ul id="icons">
+				<li></li>
+				<li><a href="https://plus.google.com/" target="_blank"><img src="images/googleIcon.png" alt="Google+" width="28"/></a></li>
+				<li><a href="https://www.linkedin.com/" target="_blank"><img src="images/linkedInIcon.png" alt="LinkedIn" width="28"/></a></li>
+				<li><a href="https://twitter.com/?lang=en" target="_blank"><img src="images/twitterIcon.png" alt="Twitter" width="28"/></a></li>
+				<li><a href="https://www.facebook.com/" target="_blank"><img src="images/facebookIcon.png" alt="Facebook" width="28"/></a></li>
+				<li>© The Game Shop</li>
+			</ul>
+		</div>
+        
+          <script>
+              
+            //Verifies if account exists and informs user of this.
+            function verifyLogin(){
+                var name=localStorage.getItem("FirstName");
+                
+                if(name.length==0){
+                  document.getElementById("account").innerHTML="Sorry, You haven't created an account";
+                }
+                else{
+                  document.getElementById("account").innerHTML="Welcome " + localStorage.FirstName;                    
+                    //alert("got em");
+                }
+
+                
+            }
+              
+            function deleteAccount(){
+            var first= "";
+		    localStorage.setItem("FirstName",first);
+            
+            var last= "";
+		    localStorage.setItem("LastName",last);
+            
+            var date= "";
+		    localStorage.setItem("D.O.B",date);
+            
+            var mail= "";
+		    localStorage.setItem("Email",mail);
+            
+            var phone= "";
+		    localStorage.setItem("PhoneNumber",phone);
+            
+            var pw="";
+		    localStorage.setItem("Password",pw);
+            
+            var pwc= "";
+		    localStorage.setItem("ConfirmPassword",pwc);
+            
+            //Address storage
+            var l1= "";
+		    localStorage.setItem("Address Line 1",l1);
+            
+            var l2= "";
+		    localStorage.setItem("Address Line 2",l2);
+            
+            var l3= "";
+		    localStorage.setItem("Address Line 3",l3);
+            
+            var c= "";
+		    localStorage.setItem("Address City",c);
+
+            var cr= "";
+		    localStorage.setItem("Address Country",cr);
+            
+             //payment storage
+            var cardnum= "";
+		    localStorage.setItem("Payment Card Number",cardnum);
+            
+            var expiredate="";
+		    localStorage.setItem("Payment Card Expiry",expiredate);
+
+            var owner= "";
+		    localStorage.setItem("Payment Card Owner",owner); 
+            
+            //other Information
+            var other="";
+		    localStorage.setItem("Other Information",other); 
+                
+            //set loggedin to false
+            localStorage.setItem("LoggedIn",false);
+                
+            location.reload(); 
+                
+            }
+              
+            document.getElementById("personaldetails").innerHTML="<b>Name:</b> "+localStorage.getItem("FirstName")+ " "+localStorage.getItem("LastName")+"<br><b>Date Of Birth:</b> "+localStorage.getItem("D.O.B")+ "<br> "+"<b>Email:</b> "+localStorage.getItem("Email")+ "<br> <b>Phone Number:</b>  "+localStorage.getItem("PhoneNumber")+"<br>";
+              
+            document.getElementById("Addressdetails").innerHTML="<b>Line 1:</b> "+localStorage.getItem("Address Line 1")+ " <br><b>Line 2:</b> "+localStorage.getItem("Address Line 2")+"<br><b>Line 3:</b> "+localStorage.getItem("Address Line 3")+ "<br> "+"<b>City:</b> "+localStorage.getItem("Address City")+ "<br> <b>Country:</b>  "+localStorage.getItem("Address Country")+"<br>";
+              
+            document.getElementById("carddetails").innerHTML="<b>Card Number:</b> "+localStorage.getItem("Payment Card Number")+ " <br><b>Card Owner:</b> "+localStorage.getItem("Payment Card Owner")+"<br><b>Card Expiry:</b> "+localStorage.getItem("Payment Card Expiry");
+              
+         //validate password to allow access to makechanges     
+         function validatePass() { 
+            var password = localStorage.getItem("Password");
+            var enterpassword = prompt("Please enter your Password");  
+
+            if(password != enterpassword)
+                {
+                    alert("Incorrect Password");
+                    location.replace("account.html");
+                  
+                }
+                else{
+                    location.replace("makechanges.html");
+                }
+            }
+
+          
+          
+          </script>>
+    
+    </body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+
+<html >
+<head>
+    <meta charset="utf-8" />
+    <title> The Game Shop</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+
+</head>
+
+<body background="Images/background.jpg">
+
+    <div style="text-align: center">
+		<br><img src="images/Logo.png" width="300" alt="The Game Shop" class="align-center"><br>
+    </div>
+
+    <div id="menubar">
+        <div class="menu">&nbsp;&nbsp;&nbsp;&nbsp;<a href="Home.html">HOME</a>&nbsp;
+        </div>
+		
+		<div class="menu">&nbsp;&nbsp;&nbsp;<a href="PSgames.html">PS4 GAMES</a>
+        </div>
+		
+		<div class="menu">&nbsp;&nbsp;&nbsp;<a href="PCgames.html">PC GAMES</a>
+        </div>
+		
+        <div class="menu">&nbsp;&nbsp;&nbsp;<a href="upcoming.html">UPCOMING GAMES</a>
+        </div>
+
+        <div class="menu">&nbsp;&nbsp;<a id="accountlogin" href="login.html">LOG IN</a>
+			<ul>
+				<li><a href="cart.html">YOUR CART</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main_body">
+        <section id="games_Page">
+			
+			<div id="featured">
+				<h3>PS4 GAMES</h3>
+				<br>
+				<div class="games">
+					<img src="images/game1.jpg" width="220" alt="BATTLEFIELD 1">
+					<h3>BATTLEFIELD 1</h3><br>
+					<p>Similar to previous entries in the series, Battlefield 1 is a first-person shooter that emphasizes teamwork.
+					The game is set in the period of World War I, and is inspired by historic events.... 
+					Melee combat was reworked, with DICE introducing new melee weapons such as sabres, trench clubs, and shovels into the game.</p><br>
+					<p>PLAYSTATION 4</p><br>
+					<h3>€50.00</h3><br>
+					<button id = "cart">Add to Cart</button>
+				</div>
+				<div class="games">
+					<img src="images/game2.jpeg" width="220" alt="FIFA 17">
+					<h3>FIFA 17</h3><br>
+					<p>FIFA 17 is a sports video game in the FIFA series, released on 27 September 2016 in North America and 29 September 2016 for the rest of the world.
+					This is the first FIFA game in the series to use the Frostbite game engine.
+					The new features in FIFA 17 include new attacking techniques, active intelligence system and set piece rewrite.</p><br>
+					<p>PLAYSTATION 4</p><br>
+					<h3>€40.00</h3><br>
+					<button id = "cart2">Add to Cart</button>
+				</div>
+				<div class="games">
+					<img src="images/game3.jpg" width="220" height="230" alt="UNCHARTED 4">
+					<h3>UNCHARTED 4</h3><br>
+					<p> Several years after his last adventure, retired fortune hunter, Nathan Drake, is forced back into the world of thieves. It is developed by Naughty Dog and published by Sony for the PlayStation 4 video game console.
+					... The game was first teased at the North America PlayStation 4 launch event in November 2013.</p><br>
+					<p>PLAYSTATION 4</p><br>
+					<h3>€45.00</h3><br>
+					<button id = "cart3">Add to Cart</button>
+				</div>
+				<div class="games">
+					<img src="images/game4.jpg" width="220" alt="GTA 5">
+					<h3>GTA 5</h3><br>
+					<p>Grand Theft Auto V (also known as Grand Theft Auto Five, GTA 5 or GTA V) is a video game developed by Rockstar North.
+					It is the fifteenth installment in the Grand Theft Auto series and the successor of Grand Theft Auto IV. It follows the life of three main protagonists, Michael, Franklin and Trevor which are all playable.</p><br>
+					<p>PLAYSTATION 4</p><br>
+					<h3>€30.00</h3><br>
+					<button id = "cart4">Add to Cart</button>
+				</div>
+			
+			</div>
+
+        </section>
+		
+		<!--Footer bar with social media links.-->
+		<div id="footer">	
+			<ul id="icons">
+				<li></li>
+				<li><a href="https://plus.google.com/" target="_blank"><img src="images/googleIcon.png" alt="Google+" width="28"/></a></li>
+				<li><a href="https://www.linkedin.com/" target="_blank"><img src="images/linkedInIcon.png" alt="LinkedIn" width="28"/></a></li>
+				<li><a href="https://twitter.com/?lang=en" target="_blank"><img src="images/twitterIcon.png" alt="Twitter" width="28"/></a></li>
+				<li><a href="https://www.facebook.com/" target="_blank"><img src="images/facebookIcon.png" alt="Facebook" width="28"/></a></li>
+				<li>© The Game Shop</li>
+			</ul>
+		</div>
+
+    </div>
+	
+	<script>
+        window.onload = loggedIn();
+        
+		//product detail
+		var i, ifPs4Full, addGame, game1, game2, game3, game4;
+		var arr =[];
+		
+		document.getElementById("cart").addEventListener("click", addBattleField);
+		document.getElementById("cart2").addEventListener("click", addFifa);
+		document.getElementById("cart3").addEventListener("click", addUncharted);
+		document.getElementById("cart4").addEventListener("click", addGta);
+		
+		function games(name, platform, cost)
+		{
+			this.name = name;
+			this.platform = platform;
+			this.cost = cost;
+		}
+		
+		function addBattleField()
+		{
+			game1 = new games("Battlefield 1", "PS4", 50.00);
+			
+			if(localStorage.getItem("pcFull") == "true")
+			{
+				addGame = JSON.parse(localStorage.CART);
+				addGame.push(game1);
+				localStorage.setItem("CART",JSON.stringify(addGame));
+				
+				ifPs4Full = false;
+				localStorage.setItem("addAnother",true);
+			}
+			else if(localStorage.getItem("addAnother") == "true")
+			{
+				addGame = JSON.parse(localStorage.CART);
+				addGame.push(game1);
+				localStorage.setItem("CART",JSON.stringify(addGame));
+			}
+			else
+			{
+				arr.push(game1);
+				localStorage.setItem("CART",JSON.stringify(arr));
+				ifPs4Full = true;
+			}
+			localStorage.setItem("ps4Full",ifPs4Full);
+			document.getElementById("cart").style.color = "#58585B";
+		}
+		
+		function addFifa()
+		{
+			game2 = new games("Fifa 17", "PS4", 40.00);
+			
+			if(localStorage.getItem("pcFull") == "true")
+			{
+				addGame = JSON.parse(localStorage.CART);
+				addGame.push(game2);
+				localStorage.setItem("CART",JSON.stringify(addGame));
+				
+				ifPs4Full = false;
+				localStorage.setItem("addAnother",true);
+			}
+			else if(localStorage.getItem("addAnother") == "true")
+			{
+				addGame = JSON.parse(localStorage.CART);
+				addGame.push(game2);
+				localStorage.setItem("CART",JSON.stringify(addGame));
+			}
+			else
+			{
+				arr.push(game2);
+				localStorage.setItem("CART",JSON.stringify(arr));
+				ifPs4Full = true;
+			}
+			localStorage.setItem("ps4Full",ifPs4Full);
+			document.getElementById("cart2").style.color = "#58585B";
+		}
+		
+		function addUncharted()
+		{
+			game3 = new games("Uncharted 4", "PS4", 45.00);
+			
+			if(localStorage.getItem("pcFull") == "true")
+			{
+				addGame = JSON.parse(localStorage.CART);
+				addGame.push(game3);
+				localStorage.setItem("CART",JSON.stringify(addGame));
+				
+				ifPs4Full = false;
+				localStorage.setItem("addAnother",true);
+			}
+			else if(localStorage.getItem("addAnother") == "true")
+			{
+				addGame = JSON.parse(localStorage.CART);
+				addGame.push(game3);
+				localStorage.setItem("CART",JSON.stringify(addGame));
+			}
+			else
+			{
+				arr.push(game3);
+				localStorage.setItem("CART",JSON.stringify(arr));
+				ifPs4Full = true;
+			}
+			localStorage.setItem("ps4Full",ifPs4Full);
+			document.getElementById("cart3").style.color = "#58585B";
+		}
+		
+		function addGta()
+		{
+			game4 = new games("Grand Theft Auto 5", "PS4", 30.00);
+			
+			if(localStorage.getItem("pcFull") == "true")
+			{
+				addGame = JSON.parse(localStorage.CART);
+				addGame.push(game4);
+				localStorage.setItem("CART",JSON.stringify(addGame));
+				
+				ifPs4Full = false;
+				localStorage.setItem("addAnother",true);
+			}
+			else if(localStorage.getItem("addAnother") == "true")
+			{
+				addGame = JSON.parse(localStorage.CART);
+				addGame.push(game4);
+				localStorage.setItem("CART",JSON.stringify(addGame));
+			}
+			else
+			{
+				arr.push(game4);
+				localStorage.setItem("CART",JSON.stringify(arr));
+				ifPs4Full = true;
+			}
+			localStorage.setItem("ps4Full",ifPs4Full);
+			document.getElementById("cart4").style.color = "#58585B";
+		}
+        
+		//check if logged in
+        function loggedIn() { 
+            var isLoggedIn = localStorage.getItem("LoggedIn");
+
+                if (isLoggedIn=='true') {
+                    document.getElementById("accountlogin").text="ACCOUNT";
+
+                }
+        }
+		
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,298 @@
+@font-face {
+    font-family: 'Gotham', sans-serif;
+    src: url('fonts/Gotham-Book.otf');
+}
+* {
+	margin: 0px;
+}
+h1 {
+	padding: 20px;
+}
+head, body, section, footer{
+	display:block;
+}
+a {
+	color: #58585B;
+	text-decoration: none;
+}
+a:hover {
+	color: #00adef;
+	text-decoration: none;
+}
+p {
+	font-size: 16px;
+}
+body 
+{  
+	font-family: 'Gotham', sans-serif;
+	color: #58585B;
+    background-attachment: fixed;
+}
+#page_body{
+	width: 980px;
+	height: 1130px;
+	margin: 50px auto; 
+	border-radius: 5px; 
+	background-color: white; 
+	padding: 20px;  
+    opacity: 0.85;
+	background: white;
+	text-align: left;
+}
+
+#cart_body{
+	width: 980px;
+	height: 1200px;
+	margin: 50px auto; 
+	border-radius: 5px; 
+	background-color: white; 
+	padding: 20px;  
+    opacity: 0.85;
+	background: white;
+	text-align: left;
+}
+
+#games_Page{
+	width: 980px;
+	height: 730px;
+	margin: 50px auto; 
+	border-radius: 5px; 
+	background-color: white; 
+	padding: 20px;  
+    opacity: 0.85;
+	background: white;
+	text-align: left;
+}
+#upcoming_page{
+	width: 980px;
+	height: 530px;
+	margin: 50px auto; 
+	border-radius: 5px; 
+	background-color: white; 
+	padding: 20px;  
+    opacity: 0.85;
+	background: white;
+	text-align: left;
+}
+#account_body{
+	width: 980px;
+	height: 270px;
+	margin: 50px auto; 
+	border-radius: 5px; 
+	background-color: white; 
+	padding: 20px;  
+    opacity: 0.85;
+	background: white;
+	text-align: left;
+}
+#login_body{
+	width: 980px;
+	height: 200px;
+	margin: 50px auto; 
+	border-radius: 5px; 
+	background-color: white; 
+	padding: 20px;  
+    opacity: 0.85;
+	background: white;
+	text-align: left;
+}
+.align-left {
+	float: left;
+	margin-left:15px;
+	margin-right: 30px;
+}
+
+#menubar { 
+	height: 40px; 
+	width: 1000px; 
+	margin:auto; 
+	border-radius: 5px; 
+	background-color: ghostwhite;
+	opacity: 0.85;	
+	padding: 10px;
+    padding-left: 80px;
+    padding-right: 1px;
+}
+.menu {
+	float: left; 
+	padding: 0.6em 2.5em 0.1em 0.5em; 
+	cursor: default;
+	font-size: 18px;
+}
+.menu ul  {
+	display: none; 
+	position: absolute; 
+	background-color: white;
+	list-style: none;
+	margin: 2px 5px 5px 0; 
+	padding: 0;
+	border-radius: 0.2em;
+}
+.menu ul li {
+	display: block; 
+	font-size: medium; 
+	padding: 0.5em;
+	border-radius: 0.2em;
+}
+div.menu:hover ul {
+	margin: 0; 
+	padding: 0; 
+	display: block;
+	background-color: white; 
+}
+div.menu ul li:hover  {
+	transition:all 0.40s;
+	background-color: #00adef;
+	opacity: 0.85;	
+}
+div.menu ul a:hover {
+	color: white;
+	text-decoration: none;
+}
+#header {
+	width: 100%;
+	height:300px;  
+	float:left;
+}
+#header img { 
+	position: relative; 
+	text-align: center;
+	height:290px;  
+	width: 100%;
+}
+#featured {
+	width: 100%;
+	height:200px;  
+	float:left;
+}
+.games {
+	width: 22.9%;
+	height: 660px;
+	background-color: white;
+	color: gray;
+	text-align: center;
+	margin:0 20px 0 0;
+	float:left;
+}
+.games p{
+	padding: 0px 10px 0px 10px;
+}
+.games:hover{
+	box-shadow: 0px 7px 10px #888888
+}
+.featuredGames {
+	width: 22.9%;
+	height: 380px;
+	background-color: white;
+	color: gray;
+	text-align: center;
+	margin:0 20px 0 0;
+	float:left;
+}
+.featuredGames:hover{
+	box-shadow: 0px 7px 10px #888888
+}
+#footer {
+	border-top: 7px solid #58585B;
+	color: white;
+	font-family: 'Gotham', sans-serif;
+	line-height: 1.6;
+	background-color: #00adef;
+	width: 100%; 
+	height:60px; 
+	float:left;
+	margin:7px 0 0 0;
+}
+#footer_login {
+	position: absolute;
+	bottom: 0;
+	border-top: 7px solid #58585B;
+	color: white;
+	font-family: 'Gotham', sans-serif;
+	line-height: 1.6;
+	background-color: #00adef;
+	width: 100%; 
+	height:60px; 
+	float:left;
+	margin:7px 0 0 0;
+}
+#icons li {
+	float: right;
+	display: inline;
+	text-decoration: none;
+	padding: 17px 10px 0px 10px;
+}
+#icons a:hover {
+    opacity: 0.6;
+	transition:all 0.40s;
+}
+#signup_body {
+    width: 980px;
+	margin: 50px auto; 
+	border-radius: 5px; 
+	background-color: white; 
+	padding: 20px;  
+    opacity: 0.85;
+	background: white;
+	text-align: left;
+}
+button {
+	background-color:white;
+	font-family: 'Gotham', sans-serif;
+    color: #00adef;
+	margin: 0 auto;
+    border: 1px solid #00adef;
+}
+button:hover {
+    background-color: #00adef;
+    color: white;
+	transition:all 0.40s;
+}
+table {
+	width: 100%;
+}
+
+th {
+	background-color: lightgray;
+	text-align: left;
+	border-bottom: 5px solid darkgray;
+	height: 27px;
+	padding: 15px;
+    color: #58585B;
+}
+td {
+	padding: 15px;
+	border-bottom: 5px solid #00658c;
+	text-align: left;
+	height: 55px;
+	color: white;
+	background-color: #00adef;
+}
+#total {
+	margin:-17px 0 0 6px;
+	height:200px;
+}
+#coupon {
+	height:100px;
+	background-color: #00adef;
+}
+#coupon, #total{
+	width: 46.5%;
+	padding: 15px;
+	color: white;
+	float:left;
+}
+
+.content {
+	width: 48%;
+	float: left;
+	text-align: left;
+}
+#testimonials {
+	margin:8px 0 0 0;
+	float:left;
+	width: 100%;
+	border-top: 1px solid #58585B;
+	border-bottom: 1px solid #58585B;
+	height:112px; 
+}

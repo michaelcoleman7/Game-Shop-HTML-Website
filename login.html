@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+
+<html >
+<head>
+    <meta charset="utf-8" />
+    <title> The Game Shop</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+</head>
+
+<body background="Images/background.jpg" onload="loggedIn()">
+
+    <div style="text-align: center">
+        <br><img src="images/Logo.png" width="300" alt="The Game Shop" class="align-center"><br>
+    </div>
+
+    <div id="menubar">
+        <div class="menu">&nbsp;&nbsp;&nbsp;&nbsp;<a href="Home.html">HOME</a>&nbsp;
+        </div>
+		
+		<div class="menu">&nbsp;&nbsp;&nbsp;<a href="PSgames.html">PS4 GAMES</a>
+        </div>
+		
+		<div class="menu">&nbsp;&nbsp;&nbsp;<a href="PCgames.html">PC GAMES</a>
+        </div>
+		
+        <div class="menu">&nbsp;&nbsp;&nbsp;<a href="upcoming.html">UPCOMING GAMES</a>
+        </div>
+
+        <div class="menu">&nbsp;&nbsp;<a id="accountlogin" href="login.html">LOG IN</a>
+			<ul>
+				<li><a href="cart.html">YOUR CART</a></li>
+            </ul>
+        </div>
+    </div><br><br>
+    <div id="main_body">
+        <section id="login_body">
+
+            <article>
+                <p style="font-weight: bold"><i>Log-in to your account</i></p>
+                <br>
+                <fieldset>
+                    <legend>Log-In</legend>
+                    <br> First Name: <input id="loginfirstname" type="text" name="logfirstname" size="25" maxlength="25" /> &nbsp; &nbsp; Last Name: <input id="loginlastname" type="text" name="loglastname" size="25" maxlength="25" /> &nbsp; &nbsp;
+                    <br><br> Password: <input id="loginpassword" name="logpassword" type="password" size="25" maxlength="15" /> &nbsp; &nbsp; &nbsp;
+                    <br><br>
+                    <button onclick="signin()">Login</button>
+
+                </fieldset>
+                <P>Not Signed up Yet? <a style="color: blue" href="Signup.html">Click here</a></P>
+
+
+                <br style="clear: left">
+
+            </article>
+
+        </section>
+
+        <!--Footer bar with social media links.-->
+        <div id="footer_login">
+            <ul id="icons">
+                <li></li>
+                <li>
+                    <a href="https://plus.google.com/" target="_blank"><img src="images/googleIcon.png" alt="Google+" width="28" /></a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/" target="_blank"><img src="images/linkedInIcon.png" alt="LinkedIn" width="28" /></a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/?lang=en" target="_blank"><img src="images/twitterIcon.png" alt="Twitter" width="28" /></a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/" target="_blank"><img src="images/facebookIcon.png" alt="Facebook" width="28" /></a>
+                </li>
+                <li>© The Game Shop</li>
+            </ul>
+        </div>
+
+        <script>
+            function signin() {
+                var firstlog = document.getElementById("loginfirstname").value;
+                localStorage.setItem("FirstNamelogin", firstlog);
+
+                var lastlog = document.getElementById("loginlastname").value;
+                localStorage.setItem("LastNamelogin", lastlog);
+
+                var pwlog = document.getElementById("loginpassword").value;
+                localStorage.setItem("Passwordlogin", pwlog);
+
+                var first = compareFirstName();
+                var last = compareLastName();
+                var password = comparePassword();
+
+                if (first && last && password) {
+                    location.replace("account.html");
+                    
+                    var loggedin=true;
+                    localStorage.setItem("LoggedIn",loggedin);
+                }
+                else {
+                    alert("Login Details Incorrect, Check Name and password.");
+                }
+
+            }
+
+            function compareFirstName() {
+                var name = localStorage.getItem("FirstName");
+                var loginname = localStorage.getItem("FirstNamelogin");
+                if (name.toLowerCase() == loginname.toLowerCase()) {
+                    return true;
+                }
+                else {
+
+                    return false;
+                }
+
+
+            }
+
+            function compareLastName() {
+                var name = localStorage.getItem("LastName");
+                var loginname = localStorage.getItem("LastNamelogin");
+                if (name.toLowerCase() == loginname.toLowerCase()) {
+                    return true;
+                } 
+                else {
+
+                    return false;
+                }
+
+            }
+
+            function comparePassword() {
+                var password = localStorage.getItem("Password");
+                var loginname = localStorage.getItem("Passwordlogin");
+                if (password == loginname) {
+                    return true;
+                }
+                else {
+
+                    return false;
+                }
+
+            }
+            
+			//check if logged in, and if so change page to account
+            function loggedIn() {            
+                var isLoggedIn = localStorage.getItem("LoggedIn");
+                
+                if (isLoggedIn=='true') {
+                    location.replace("account.html");
+                }
+                
+            }
+            
+            
+        </script>>
+
+</body>
+</html>

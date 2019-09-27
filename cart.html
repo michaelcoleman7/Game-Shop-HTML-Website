@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+
+<html >
+<head>
+    <meta charset="utf-8" />
+    <title> The Game Shop</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+
+</head>
+
+<body background="Images/background.jpg">
+
+    <div style="text-align: center">
+		<br><img src="images/Logo.png" width="300" alt="The Game Shop" class="align-center"><br>
+    </div>
+
+    <div id="menubar">
+        <div class="menu">&nbsp;&nbsp;&nbsp;&nbsp;<a href="Home.html">HOME</a>&nbsp;
+        </div>
+		
+		<div class="menu">&nbsp;&nbsp;&nbsp;<a href="PSgames.html">PS4 GAMES</a>
+        </div>
+		
+		<div class="menu">&nbsp;&nbsp;&nbsp;<a href="PCgames.html">PC GAMES</a>
+        </div>
+		
+        <div class="menu">&nbsp;&nbsp;&nbsp;<a href="upcoming.html">UPCOMING GAMES</a>
+        </div>
+
+        <div class="menu">&nbsp;&nbsp;<a id="accountlogin" href="login.html">LOG IN</a>
+			<ul>
+				<li><a href="cart.html">YOUR CART</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main_body">
+        <section id="cart_body">
+		
+			<table id = "cartData" >
+				<tr>
+					<th>Game</th>
+					<th>Platform</th>
+					<th>Price</th>
+				</tr>
+				<tr id="cartTable0"></tr>
+				<tr id="cartTable1"></tr>
+				<tr id="cartTable2"></tr>
+				<tr id="cartTable3"></tr>
+				<tr id="cartTable4"></tr>
+				<tr id="cartTable5"></tr>
+				<tr id="cartTable6"></tr>
+				<tr id="cartTable7"></tr>
+				<tr id="cartTable8"></tr>
+				<tr id="cartTable9"></tr>
+			</table>
+			<br>
+			<div id = "coupon">
+				<h3>COUPON CODE</h3><br>
+				<p>Enter your coupon code here:</p><br>
+				<input id="getCoupon" type="text" name="coupon" size="25" maxlength="25"/>
+				<button id = "enterCoupon">Enter</button>
+			</div>
+			<div id = "total">
+				<table>
+					<tr>
+						<td>SUBTOTAL:</td>
+						<td id = "subTotal"></td>
+					</tr>
+					<tr>
+						<td>DISCOUNT:</td>
+						<td id = "discountCost"></td>
+					</tr>
+					<tr>
+						<td>TOTAL:</td>
+						<td id = "fullCost"></td>
+					</tr>
+				</table>
+				<br><button id = "clear">Clear Cart</button>&nbsp;
+				<a href="home.html" id = "submitCart"><button>Submit</button></a>
+	
+			</div>
+		
+        </section>
+		
+		<!--Footer bar with social media links.-->
+		<div id="footer">	
+			<ul id="icons">
+				<li></li>
+				<li><a href="https://plus.google.com/" target="_blank"><img src="images/googleIcon.png" alt="Google+" width="28"/></a></li>
+				<li><a href="https://www.linkedin.com/" target="_blank"><img src="images/linkedInIcon.png" alt="LinkedIn" width="28"/></a></li>
+				<li><a href="https://twitter.com/?lang=en" target="_blank"><img src="images/twitterIcon.png" alt="Twitter" width="28"/></a></li>
+				<li><a href="https://www.facebook.com/" target="_blank"><img src="images/facebookIcon.png" alt="Facebook" width="28"/></a></li>
+				<li>© The Game Shop</li>
+			</ul>
+		</div>
+
+    </div>
+	
+	<script>
+        window.onload = loggedIn();
+        
+		var i;
+		var order =[];
+		var ps4Game = JSON.parse(localStorage.CART);
+		
+		localStorage.setItem("coupon","SAVE25");
+		
+		for (i = 0; i < ps4Game.length; i++)
+		{
+			document.getElementById("cartTable" + i).innerHTML = "<td>" + ps4Game[i].name + "</td><td>" + ps4Game[i].platform + "</td><td>€" + ps4Game[i].cost + "</td>";
+			order.push(ps4Game[i].name);
+		}
+		
+		localStorage.setItem("CART",JSON.stringify(ps4Game));
+		
+		document.getElementById("clear").addEventListener("click", clearCart);
+		document.getElementById("enterCoupon").addEventListener("click", couponCode);
+		
+		//clear cart
+		function clearCart()
+		{	
+			//localStorage.clear();
+            localStorage.removeItem("CART");
+			window.location.reload();
+		}
+		
+		//totals
+		var totalCost = 0.00;
+		for(var i in ps4Game) { totalCost += ps4Game[i].cost; }
+		
+		document.getElementById("subTotal").innerHTML = "€" + totalCost;
+		
+		function couponCode()
+		{
+			var ifCoupon = document.getElementById("getCoupon").value;
+			
+			if (ifCoupon == localStorage.getItem("coupon"))
+			{
+				var discount = totalCost * .25;
+				var discountCost = totalCost - discount;
+				document.getElementById("discountCost").innerHTML = "€" + discount;
+				document.getElementById("fullCost").innerHTML = "€" + discountCost;
+			}
+			else
+			{
+				alert("Not a valid Coupon Code");   
+			}
+		}
+		
+		document.getElementById("submitCart").addEventListener("click", submit);
+		
+		//Submit cart
+		function submit()
+		{
+			localStorage.setItem("OrderContents",order);
+			//localStorage.setItem("total",parseFloat(document.getElementById("fullCost").value));
+		}
+        
+		//check if logged in
+        function loggedIn() { 
+            var isLoggedIn = localStorage.getItem("LoggedIn");
+
+                if (isLoggedIn=='true') {
+                    document.getElementById("accountlogin").text="ACCOUNT";
+
+                }
+        }
+	</script>
+
+</body>
+</html>

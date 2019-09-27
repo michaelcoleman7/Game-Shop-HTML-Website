@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+
+<html >
+<head>
+    <meta charset="utf-8" />
+    <title> The Game Shop</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+</head>
+
+<body background="Images/background.jpg">
+
+    <div style="text-align: center">
+		<br><img src="images/Logo.png" width="300" alt="The Game Shop" class="align-center"><br>
+    </div>
+
+    <div id="menubar">
+        <div class="menu">&nbsp;&nbsp;&nbsp;&nbsp;<a href="Home.html">HOME</a>&nbsp;
+        </div>
+		
+		<div class="menu">&nbsp;&nbsp;&nbsp;<a href="PSgames.html">PS4 GAMES</a>
+        </div>
+		
+		<div class="menu">&nbsp;&nbsp;&nbsp;<a href="PCgames.html">PC GAMES</a>
+        </div>
+		
+        <div class="menu">&nbsp;&nbsp;&nbsp;<a href="upcoming.html">UPCOMING GAMES</a>
+        </div>
+		
+        <div class="menu">&nbsp;&nbsp;<a id="accountlogin" href="login.html">LOG IN</a>
+			<ul>
+				<li><a href="cart.html">YOUR CART</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main_body">
+        <section id="page_body">
+			<div id="header" style="text-align: center">
+				<img id="image1" width="980"/>
+			</div>
+			
+            <article>
+                <h3><i>Welcome to the Game shop</i><h3><br>
+
+                <img src="images/coupon.jpg" width="500" height="210" alt="Room" class="align-left" style="box-shadow: 0px 10px 12px #888888">
+                <p>Browse Some of the worlds <u><b>BEST</u></b> games for some of the world's <u><b>BEST</u></b> prices. <br><br> Choose between:</p><br>
+                <ul>
+                    <li><a style="color: blue" href="PSgames.html">Playstation 4</a></li>
+                    <li><a style="color: blue" href="PCgames.html">Or PC</a></li>
+                </ul><br>
+                <p>Use coupon code <b>SAVE25</b> for a massive 25% off your order. View our other pages for more information.</p>
+                <br style="clear: left" >
+            </article>
+			
+			<div id="featured">
+				<h3><br>FEATURED GAMES</h3>
+				<br>
+				<div class="featuredGames">
+					<img src="images/game1.jpg" width="220" alt="BATTLEFIELD 1">
+					<h3>BATTLEFIELD 1</h3><br>
+					<p>PLAYSTATION 4</p><br>
+					<h3>€50.00</h3><br>
+					<a href="PSgames.html"><button>Go to Buy</button></a>
+				</div>
+				<div class="featuredGames">
+					<img src="images/game2.jpeg" width="220" alt="FIFA 17">
+					<h3>FIFA 17</h3><br>
+					<p>PLAYSTATION 4</p><br>
+					<h3>€40.00</h3><br>
+					<a href="PSgames.html"><button>Go to Buy</button></a>
+				</div>
+				<div class="featuredGames">
+					<img src="images/game5.jpeg" width="220" alt="THE WITCHER 3">
+					<h3>THE WITCHER 3</h3><br>
+					<p>PC</p><br>
+					<h3>€20.00</h3><br>
+					<a href="PCgames.html"><button>Go to Buy</button></a>
+				</div>
+				<div class="featuredGames">
+					<img src="images/game6.jpg" width="220" alt="OVERWATCH">
+					<h3>OVERWATCH</h3><br>
+					<p>PC</p><br>
+					<h3>€45.00</h3><br>
+					<a href="PCgames.html"><button>Go to Buy</button></a>
+				</div>
+				
+				<h3>REVIEWS</h3>
+				
+				<div id="testimonials">
+					<div class="content">
+						<br><p>"Buying items was quick and the PayPal option is really handy! Will definitely shop here again!"</p>
+						<br><b>Review by - John</b>
+					</div>
+					<div class="content">
+						<br><p>"Game arrived exactly when it should have. Excellent communication from seller, highly recommend. "</p>
+						<br><b>Review by - Gerry</b>
+					</div>
+				</div>
+			</div>
+        </section>
+	
+        <div style="text-align: center">
+
+            <a id="signupbutton" href="Signup.html"><img id="imagebutton" src="images/Signup.png" height="300" width="300" alt="Sign Up" />
+
+        </div>
+		
+		<!--Footer bar with social media links.-->
+		<div id="footer">	
+			<ul id="icons">
+				<li></li>
+				<li><a href="https://plus.google.com/" target="_blank"><img src="images/googleIcon.png" alt="Google+" width="28"/></a></li>
+				<li><a href="https://www.linkedin.com/" target="_blank"><img src="images/linkedInIcon.png" alt="LinkedIn" width="28"/></a></li>
+				<li><a href="https://twitter.com/?lang=en" target="_blank"><img src="images/twitterIcon.png" alt="Twitter" width="28"/></a></li>
+				<li><a href="https://www.facebook.com/" target="_blank"><img src="images/facebookIcon.png" alt="Facebook" width="28"/></a></li>
+				<li>© The Game Shop</li>
+			</ul>
+		</div>
+
+    </div>
+	
+	<script>
+			//Produce Random Image on refresh of page.
+			var i, j;
+			var arr = [1, 2, 3];
+			window.onload = shuffle(arr);
+			
+			function shuffle(arr)
+			{
+				for (i = arr.length; i; i--) 
+				{
+					j = Math.floor(Math.random() * i);
+					[arr[i - 1], arr[j]] = [arr[j], arr[i - 1]];
+				}
+				document.getElementById("image1").src = "images/" + arr.pop() + ".jpg";
+			}
+        
+			//check if logged in
+            window.onload = loggedIn();
+            function loggedIn() { 
+                var isLoggedIn = localStorage.getItem("LoggedIn");
+                
+                if (isLoggedIn=='true') {
+                    document.getElementById("accountlogin").text="ACCOUNT";
+                    document.getElementById("signupbutton").href="account.html";
+                    document.getElementById("imagebutton").src="images/accountbutton.png";
+                }
+                
+            }
+		</script>
+
+</body>
+</html>

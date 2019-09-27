@@ -1,0 +1,245 @@
+<!DOCTYPE HTML>
+
+<html >
+<head>
+    <meta charset="utf-8" />
+    <title> The Game Shop</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+
+</head>
+
+<body background="Images/background.jpg">
+
+    <div style="text-align: center">
+		<br><img src="images/Logo.png" width="300" alt="The Game Shop" class="align-center"><br>
+    </div>
+
+    <div id="menubar">
+        <div class="menu">&nbsp;&nbsp;&nbsp;&nbsp;<a href="Home.html">HOME</a>&nbsp;
+        </div>
+		
+		<div class="menu">&nbsp;&nbsp;&nbsp;<a href="PSgames.html">PS4 GAMES</a>
+        </div>
+		
+		<div class="menu">&nbsp;&nbsp;&nbsp;<a href="PCgames.html">PC GAMES</a>
+        </div>
+		
+        <div class="menu">&nbsp;&nbsp;&nbsp;<a href="upcoming.html">UPCOMING GAMES</a>
+        </div>
+
+        <div class="menu">&nbsp;&nbsp;<a id="accountlogin" href="login.html">LOG IN</a>
+			<ul>
+				<li><a href="cart.html">YOUR CART</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main_body">
+        <section id="games_Page">
+			
+			<div id="featured">
+				<h3>PC Games</h3>
+				<br>
+				<div class="games">
+					<img src="images/game5.jpeg" width="220" alt="THE WITCHER 3">
+					<h3>THE WITCHER 3</h3><br>
+					<p>The Witcher® 3: Wild Hunt is a story-driven, next-generation open world role-playing game,
+					set in a visually stunning fantasy universe, full of meaningful choices and impactful consequences.
+					You play as Geralt of Rivia, a monster hunter tasked with finding a child from an ancient prophecy.</p><br>
+					<p>PC</p><br>
+					<h3>€20.00</h3><br>
+					<button id="cart5">Add to Cart</button>
+				</div>
+				<div class="games">
+					<img src="images/game6.jpg" width="220" alt="OVERWATCH">
+					<h3>OVERWATCH</h3><br>
+					<p>Overwatch is a team-based multiplayer first-person shooter video game developed and published by Blizzard Entertainment.</p><br>
+					<p>PC</p><br>
+					<h3>€45.00</h3><br>
+					<button  id="cart6">Add to Cart</button>
+					
+				</div>
+				<div class="games">
+					<img src="images/game7.jpg" width="220" height="220" alt="GTA SA">
+					<h3>GTA San Andreas</h3><br>
+					<p>Grand Theft Auto: San Andreas is an open world action-adventure video game developed by Rockstar North and published by Rockstar.</p><br>
+					<p>PC</p><br>
+					<h3>€15.00</h3><br>
+					<button  id="cart7">Add to Cart</button><br><br>
+				</div>
+				<div class="games">
+					<img src="images/game8.jpg" width="220" height="220" alt="CSGO">
+					<h3>CSGO</h3><br>
+					<p>Counter-Strike: Global Offensive (CS:GO) expands upon the team-based action gameplay that the franchise pioneered when it was launched 12 years ago. 
+					CS:GO features new maps, characters, and weapons and delivers updated versions of the classic CS content (de_dust, etc.).</p><br>
+					<p>PC</p><br>
+					<h3>€10.00</h3><br>
+					<button  id="cart8">Add to Cart</button>
+				</div>
+			</div>
+
+        </section>
+		
+		<!--Footer bar with social media links.-->
+		<div id="footer">	
+			<ul id="icons">
+				<li></li>
+				<li><a href="https://plus.google.com/" target="_blank"><img src="images/googleIcon.png" alt="Google+" width="28"/></a></li>
+				<li><a href="https://www.linkedin.com/" target="_blank"><img src="images/linkedInIcon.png" alt="LinkedIn" width="28"/></a></li>
+				<li><a href="https://twitter.com/?lang=en" target="_blank"><img src="images/twitterIcon.png" alt="Twitter" width="28"/></a></li>
+				<li><a href="https://www.facebook.com/" target="_blank"><img src="images/facebookIcon.png" alt="Facebook" width="28"/></a></li>
+				<li>© The Game Shop</li>
+			</ul>
+		</div>
+
+    </div>
+	
+	<script>
+        window.onload = loggedIn();
+        
+		//product detail
+		var i, ifPcFull, addGame, game5, game6, game7, game8;
+		var arr =[];
+		
+		document.getElementById("cart5").addEventListener("click", addWitcher);
+		document.getElementById("cart6").addEventListener("click", addOverWatch);
+		document.getElementById("cart7").addEventListener("click", addGtaSA);
+		document.getElementById("cart8").addEventListener("click", addCSGO);
+		
+		function games(name, platform, cost)
+		{
+			this.name = name;
+			this.platform = platform;
+			this.cost = cost;
+		}
+		
+		function addWitcher()
+		{
+			game5 = new games("Witcher 3", "PC", 20.00);
+			
+			if(localStorage.getItem("ps4Full") == "true")
+			{
+				addGame = JSON.parse(localStorage.CART);
+				addGame.push(game5);
+				localStorage.setItem("CART",JSON.stringify(addGame));
+				
+				ifPcFull = false;
+				localStorage.setItem("addAnother",true);
+			}
+			else if(localStorage.getItem("addAnother") == "true")
+			{
+				addGame = JSON.parse(localStorage.CART);
+				addGame.push(game5);
+				localStorage.setItem("CART",JSON.stringify(addGame));
+			}
+			else
+			{
+				arr.push(game5);
+				localStorage.setItem("CART",JSON.stringify(arr));
+				ifPcFull = true;
+			}
+			localStorage.setItem("pcFull",ifPcFull);
+			document.getElementById("cart5").style.color = "#58585B";
+		}
+		
+		function addOverWatch()
+		{
+			game6 = new games("Overwatch", "PC", 45.00);
+			
+			if(localStorage.getItem("ps4Full") == "true")
+			{
+				addGame = JSON.parse(localStorage.CART);
+				addGame.push(game6);
+				localStorage.setItem("CART",JSON.stringify(addGame));
+				
+				ifPcFull = false;
+				localStorage.setItem("addAnother",true);
+			}
+			else if(localStorage.getItem("addAnother") == "true")
+			{
+				addGame = JSON.parse(localStorage.CART);
+				addGame.push(game6);
+				localStorage.setItem("CART",JSON.stringify(addGame));
+			}
+			else
+			{
+				arr.push(game6);
+				localStorage.setItem("CART",JSON.stringify(arr));
+				ifPcFull = true;
+			}
+			localStorage.setItem("pcFull",ifPcFull);
+			document.getElementById("cart6").style.color = "#58585B";
+		}
+		
+		function addGtaSA()
+		{
+			game7 = new games("GTA San Andreas", "PC", 15.00);
+			
+			if(localStorage.getItem("ps4Full") == "true")
+			{
+				addGame = JSON.parse(localStorage.CART);
+				addGame.push(game7);
+				localStorage.setItem("CART",JSON.stringify(addGame));
+				
+				ifPcFull = false;
+				localStorage.setItem("addAnother",true);
+			}
+			else if(localStorage.getItem("addAnother") == "true")
+			{
+				addGame = JSON.parse(localStorage.CART);
+				addGame.push(game7);
+				localStorage.setItem("CART",JSON.stringify(addGame));
+			}
+			else
+			{
+				arr.push(game7);
+				localStorage.setItem("CART",JSON.stringify(arr));
+				ifPcFull = true;
+			}
+			localStorage.setItem("pcFull",ifPcFull);
+			document.getElementById("cart7").style.color = "#58585B";
+		}
+		
+		function addCSGO()
+		{
+			game8 = new games("Counter-Strike: GO", "PC", 10.00);
+			
+			if(localStorage.getItem("ps4Full") == "true")
+			{
+				addGame = JSON.parse(localStorage.CART);
+				addGame.push(game8);
+				localStorage.setItem("CART",JSON.stringify(addGame));
+				
+				ifPcFull = false;
+				localStorage.setItem("addAnother",true);
+			}
+			else if(localStorage.getItem("addAnother") == "true")
+			{
+				addGame = JSON.parse(localStorage.CART);
+				addGame.push(game8);
+				localStorage.setItem("CART",JSON.stringify(addGame));
+			}
+			else
+			{
+				arr.push(game8);
+				localStorage.setItem("CART",JSON.stringify(arr));
+				ifPcFull = true;
+			}
+			localStorage.setItem("pcFull",ifPcFull);
+			document.getElementById("cart8").style.color = "#58585B";
+		}
+        
+		//check if logged in
+        function loggedIn() { 
+            var isLoggedIn = localStorage.getItem("LoggedIn");
+
+                if (isLoggedIn=='true') {
+                    document.getElementById("accountlogin").text="ACCOUNT";
+
+                }
+            }
+	
+	</script>
+
+</body>
+</html>

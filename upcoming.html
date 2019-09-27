@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+
+<html >
+<head>
+    <meta charset="utf-8" />
+    <title> The Game Shop</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+
+</head>
+
+<body background="Images/background.jpg">
+
+    <div style="text-align: center">
+		<br><img src="images/Logo.png" width="300" alt="The Game Shop" class="align-center"><br>
+    </div>
+
+    <div id="menubar">
+        <div class="menu">&nbsp;&nbsp;&nbsp;&nbsp;<a href="Home.html">HOME</a>&nbsp;
+        </div>
+		
+		<div class="menu">&nbsp;&nbsp;&nbsp;<a href="PSgames.html">PS4 GAMES</a>
+        </div>
+		
+		<div class="menu">&nbsp;&nbsp;&nbsp;<a href="PCgames.html">PC GAMES</a>
+        </div>
+		
+        <div class="menu">&nbsp;&nbsp;&nbsp;<a href="upcoming.html">UPCOMING GAMES</a>
+        </div>
+
+        <div class="menu">&nbsp;&nbsp;<a id="accountlogin" href="login.html">LOG IN</a>
+			<ul>
+				<li><a href="cart.html">YOUR CART</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main_body">
+        <section id="upcoming_page">
+			
+			<div id="featured">
+				<h3>UPCOMING GAMES</h3>
+				<br>
+				<div class="featuredGames">
+					<img src="images/up1.jpg" height= "220" width="220" alt="Crash Bandicoot"><br>
+					<h3>Crash Bandicoot</h3>
+					<h3>N. Sane Trilogy</h3><br>
+					<p>PS4</p><br>
+					<h3>Release Date:<h3>
+					<h3>30th of June 2017</h3><br><br><br>
+				</div>
+				<div class="featuredGames">
+					<img src="images/up2.jpg" height= "220" width="170" alt="COD WWII">
+					<h3>Call of Duty: <h3>
+					<h3>World War II</h3><br>
+					<p>PC</p><br>
+					<h3>Release Date:</h3>
+					<h3>3rd of November 2017</h3><br><br><br>
+				</div>
+				<div class="featuredGames">
+					<img src="images/up3.jpg" width="170" height="220" alt="RDR2">
+					<h3>Red Dead Redemption 2</h3><br>
+					<p>PS4</p><br>
+					<h3>Release Date:</h3>
+					<h3>To Be Announced</h3><br><br><br>
+				</div>
+				<div class="featuredGames">
+					<img src="images/up4.jpg" width="170" height="220" alt="Destiny2">
+					<h3>Destiny 2</h3><br>
+					<p>PC</p><br>
+					<h3>Release Date:</h3>
+					<h3>8th of September 2017</h3><br><br><br>
+				</div>
+			</div>
+
+        </section>
+		
+		<!--Footer bar with social media links.-->
+		<div id="footer">	
+			<ul id="icons">
+				<li></li>
+				<li><a href="https://plus.google.com/" target="_blank"><img src="images/googleIcon.png" alt="Google+" width="28"/></a></li>
+				<li><a href="https://www.linkedin.com/" target="_blank"><img src="images/linkedInIcon.png" alt="LinkedIn" width="28"/></a></li>
+				<li><a href="https://twitter.com/?lang=en" target="_blank"><img src="images/twitterIcon.png" alt="Twitter" width="28"/></a></li>
+				<li><a href="https://www.facebook.com/" target="_blank"><img src="images/facebookIcon.png" alt="Facebook" width="28"/></a></li>
+				<li>© The Game Shop</li>
+			</ul>
+		</div>
+    </div>
+                    
+    <script>
+	//check if logged in
+        window.onload = loggedIn();        
+        function loggedIn() { 
+            var isLoggedIn = localStorage.getItem("LoggedIn");
+
+                if (isLoggedIn=='true') {
+                    document.getElementById("accountlogin").text="ACCOUNT";
+
+                }
+        }
+                    
+    </script>>
+
+</body>
+</html>

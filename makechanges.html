@@ -1,0 +1,427 @@
+<!DOCTYPE HTML>
+
+<html >
+<head>
+    <meta charset="utf-8" />
+    <title> The Game Shop</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+
+
+
+</head>
+
+<body background="Images/background.jpg" onload="loadDetails()">
+
+     <div style="text-align: center">
+		<br><img src="images/Logo.png" width="300" alt="The Game Shop" class="align-center"><br>
+    </div>
+
+    <div id="menubar">
+        <div class="menu">&nbsp;&nbsp;&nbsp;&nbsp;<a href="Home.html">HOME</a>&nbsp;
+        </div>
+		
+		<div class="menu">&nbsp;&nbsp;&nbsp;<a href="PSgames.html">PS4 GAMES</a>
+        </div>
+		
+		<div class="menu">&nbsp;&nbsp;&nbsp;<a href="PCgames.html">PC GAMES</a>
+        </div>
+		
+        <div class="menu">&nbsp;&nbsp;&nbsp;<a href="upcoming.html">UPCOMING GAMES</a>
+        </div>
+
+        <div class="menu">&nbsp;&nbsp;<a id="accountlogin" href="login.html">LOG IN</a>
+			<ul>
+				<li><a href="cart.html">YOUR CART</a></li>
+            </ul>
+        </div>
+    </div><br><br>
+    
+    <section id="signup_body">
+        <article>
+            <form name="signupform">
+                <p>Make changes to your account Information.</p>
+                <br/>
+
+                <fieldset><legend>Personal Information</legend>
+                    <br/>
+                    <p>First Name: <input id="getfirstname" type="text" name="firstname" size="25" maxlength="25" /> &nbsp; &nbsp;
+                    Last Name: <input id="getlastname" type="text" name="lastname" size="25" maxlength="25" /> &nbsp; &nbsp;
+                    <br>
+                    <br>
+                    Date of Birth: <input id="dateofbirth" type="text" name="dateofbirth" value="DD/MM/YYYY" size="10" /> &nbsp; &nbsp;
+                    E-mail Address: <input id="email" name="email" type="email" size="25" onchange="checkEmail(document.signupform.email.value)"/> &nbsp; &nbsp; &nbsp;
+                    Phone Number: <input id="phoneNum" name="phoneNum" type="text" size="12" maxlength="10" onchange="phonenumber(document.signupform.phoneNum.value)"/> &nbsp; &nbsp; &nbsp; <br><br>
+                    Password: <input id="password" name="password" type="password" size="25" maxlength="15"  /> &nbsp; &nbsp; &nbsp;
+                    Confirm Password: <input id="confirm" name="confirmpassword" type="password" size="25" maxlength="15"  /> &nbsp; &nbsp; &nbsp;
+
+                    </p>
+                </fieldset>
+
+                <fieldset><legend>Address</legend>
+                    <br/>
+                    <p>Line 1: <input id="line1" name="line1" type="text" size="25" />
+                    <br>
+                    <br>
+                    Line 2: <input id="line2" name="line2" type="text" size="25" />
+                    <br>
+                    <br>
+                    Line 3: <input id="line3" name="line3" type="text" size="25" />
+                    <br>
+                    <br>
+                    City: <input  id="city" name="city" type="text" size="25" />
+                    <br>
+                    <br>
+                    Country: <input id="country" name="county" type="text" size="25" /></p>
+                </fieldset>
+
+                <fieldset><legend>Payment Details</legend>
+                    <br><p>Select the card type you wish to pay with:
+                    <select name="card">
+                        <option>Master Card</option>
+                        <option>Visa</option>
+                        <option>Credit Card</option>
+                    </select>
+                    <br>
+                    <br>
+                    Card Number:
+                    <input id="cardnumber" name="cardnumber" type="text" size="30" maxlength="30" />
+                    <br>
+                    <br>
+                    Name of Card Owner:
+                    <input id="cardowner" name="cardowner" type="text" size="20" maxlength="30" />
+                    <br>
+                    <br>
+                    Card Expiry Date:
+                    <input id="expirydate" name="expirydate" type="text" value="MM/YYYY" size="7" maxlength="7" />
+                    </p>
+                </fieldset>
+
+                <fieldset><legend>NewsLetter</legend>
+                    <br><p>Would you like to hear about our latest offers - Sign up to our newsletter:
+                    <br><br><input name="newsletter" type="checkbox" value="yes" /> Recieve Emails &nbsp;
+                    <br>
+                    <br>
+
+     
+
+                </fieldset>
+                <br>Any other Information you wish to provide? (Optional)
+                <br><textarea id="otherinfo" name="otherinfo" rows="8" cols="80"></textarea>
+                <br>
+                <br>
+                <p>Submitting will make changes to your account's information</p>
+                <br>
+                <button id="submitbutton" onclick="submitDetails()">Submit</button>
+                
+            </form>
+        </article>
+
+        <article>
+            <br><p><a href="account.html" style="color:black"><u>Return to Account</u></a</p>
+        </article>
+
+    </section>	
+	<!--Footer bar with social media links.-->
+	<div id="footer">	
+		<ul id="icons">
+			<li></li>
+			<li><a href="https://plus.google.com/" target="_blank"><img src="images/googleIcon.png" alt="Google+" width="28"/></a></li>
+			<li><a href="https://www.linkedin.com/" target="_blank"><img src="images/linkedInIcon.png" alt="LinkedIn" width="28"/></a></li>
+			<li><a href="https://twitter.com/?lang=en" target="_blank"><img src="images/twitterIcon.png" alt="Twitter" width="28"/></a></li>
+			<li><a href="https://www.facebook.com/" target="_blank"><img src="images/facebookIcon.png" alt="Facebook" width="28"/></a></li>
+			<li>© The Game Shop</li>
+		</ul>
+	</div>
+    
+    <script>
+        //check for empty fields
+        function submitDetails(){
+            
+            saveDetails();
+            
+            
+            //personal information storage
+            var first= document.getElementById("getfirstname").value;
+		    localStorage.setItem("tempFirstName",first);
+            
+            var last= document.getElementById("getlastname").value;
+		    localStorage.setItem("tempLastName",last);
+            
+            var date= document.getElementById("dateofbirth").value;
+		    localStorage.setItem("tempD.O.B",date);
+            
+            var mail= document.getElementById("email").value;
+		    localStorage.setItem("tempEmail",mail);
+            
+            var phone= document.getElementById("phoneNum").value;
+		    localStorage.setItem("tempPhoneNumber",phone);
+            
+            var pw= document.getElementById("password").value;
+		    localStorage.setItem("tempPassword",pw);
+            
+            var pwc= document.getElementById("confirm").value;
+		    localStorage.setItem("tempConfirmPassword",pwc);
+            
+            //Address storage
+            var l1= document.getElementById("line1").value;
+		    localStorage.setItem("tempAddress Line 1",l1);
+            
+            var l2= document.getElementById("line2").value;
+		    localStorage.setItem("tempAddress Line 2",l2);
+            
+            var l3= document.getElementById("line3").value;
+		    localStorage.setItem("tempAddress Line 3",l3);
+            
+            var c= document.getElementById("city").value;
+		    localStorage.setItem("tempAddress City",c);
+
+            var cr= document.getElementById("country").value;
+		    localStorage.setItem("tempAddress Country",cr);
+            
+             //payment storage
+            var cardnum= document.getElementById("cardnumber").value;
+		    localStorage.setItem("tempPayment Card Number",cardnum);
+            
+            var expiredate= document.getElementById("expirydate").value;
+		    localStorage.setItem("tempPayment Card Expiry",expiredate);
+
+            var owner= document.getElementById("cardowner").value;
+		    localStorage.setItem("tempPayment Card Owner",owner); 
+            
+            //other Information
+            var other= document.getElementById("otherinfo").value;
+		    localStorage.setItem("tempOther Information",other); 
+            
+            var hasEmpty = emptyFields();
+            
+            //password Validation
+            if(!hasEmpty){
+               
+            }
+            if(pw != pwc)
+            {
+               alert("Passwords do not Match"); 
+                
+            }
+            if(hasEmpty&&(pw == pwc)){
+                resetDetails();
+            }
+        }
+        
+        function resetDetails(){
+            console.log("reset details");
+            localStorage.removeItem("tempFirstName");
+            localStorage.removeItem("tempLastName");
+            localStorage.removeItem("tempD.O.B");
+            localStorage.removeItem("tempEmail");
+            localStorage.removeItem("tempPassword");
+            localStorage.removeItem("tempConfirmPassword");
+            localStorage.removeItem("tempPhoneNumber");
+            localStorage.removeItem("tempAddress Line 1");
+            localStorage.removeItem("tempAddress Line 2");
+            localStorage.removeItem("tempAddress Line 3");
+            localStorage.removeItem("tempAddress City");
+            localStorage.removeItem("tempAddress Country");
+            localStorage.removeItem("tempPayment Card Number");
+            localStorage.removeItem("tempPayment Card Owner");
+            localStorage.removeItem("tempPayment Card Expiry");
+            localStorage.removeItem("tempOther Information");
+            
+        }
+        
+        function loadDetails(){
+            loggedIn();
+            
+            //To hold stored information when a field dont match criteria e.g passwords dont match
+            document.getElementById("getfirstname").value=localStorage.getItem("tempFirstName");
+            
+            document.getElementById("getlastname").value =localStorage.getItem("tempLastName"); 
+            
+            document.getElementById("dateofbirth").value  =localStorage.getItem("tempD.O.B"); 
+            
+            document.getElementById("email").value =localStorage.getItem("tempEmail");
+            
+            document.getElementById("phoneNum").value=localStorage.getItem("tempPhoneNumber");		   
+		    
+            document.getElementById("line1").value=localStorage.getItem("tempAddress Line 1");
+		              
+            document.getElementById("line2").value=localStorage.getItem("tempAddress Line 2");
+            
+            document.getElementById("line3").value=localStorage.getItem("tempAddress Line 3");
+		         
+            document.getElementById("city").value =localStorage.getItem("tempAddress City");
+		    
+            document.getElementById("country").value=localStorage.getItem("tempAddress Country");
+ 
+            document.getElementById("cardnumber").value=localStorage.getItem("tempPayment Card Number");
+
+            document.getElementById("cardowner").value=localStorage.getItem("tempPayment Card Owner");
+            
+            document.getElementById("expirydate").value=localStorage.getItem("tempPayment Card Expiry");
+
+            document.getElementById("otherinfo").value=localStorage.getItem("tempOther Information"); 
+       
+        }
+        
+		//check for empty fields
+        function  emptyFields(){
+            
+            if(document.getElementById("getfirstname").value==""){
+                alert("Please Fill out all required fields"); 
+                return false;
+            }
+            
+            else if(document.getElementById("getlastname").value==""){
+                alert("Please Fill out all required fields");
+                return false;
+            }
+            else if(document.getElementById("dateofbirth").value==""){
+                alert("Please Fill out all required fields"); 
+                return false;
+            }
+            else if(document.getElementById("email").value==""){
+                alert("Please Fill out all required fields"); 
+                return false;
+            }
+            else if(document.getElementById("password").value==""){
+                alert("Please Fill out all required fields"); 
+                return false;
+            }
+            else if(document.getElementById("confirm").value==""){
+                alert("Please Fill out all required fields"); 
+                return false;
+            }
+            else if(document.getElementById("phoneNum").value==""){
+                alert("Please Fill out all required fields"); 
+                return false;
+            }
+            else if(document.getElementById("line1").value==""){
+                alert("Please Fill out all required fields"); 
+                return false;
+            }
+            else if(document.getElementById("line2").value==""){
+                alert("Please Fill out all required fields"); 
+                return false;
+            }          
+            else if(document.getElementById("line3").value==""){
+                alert("Please Fill out all required fields"); 
+                return false;
+            }           
+            else if(document.getElementById("city").value==""){
+                alert("Please Fill out all required fields"); 
+                return false;
+            }           
+            else if(document.getElementById("country").value==""){
+                alert("Please Fill out all required fields"); 
+                return false;
+            }           
+            else if(document.getElementById("cardnumber").value==""){
+                alert("Please Fill out all required fields"); 
+                return false;
+            }           
+            else if(document.getElementById("cardowner").value==""){
+                alert("Please Fill out all required fields");
+                return false; 
+            }           
+            else if(document.getElementById("expirydate").value==""){
+                alert("Please Fill out all required fields");
+                return false;
+            } 
+            
+            return true;
+            
+        }
+        
+		//re-save details, by overwriting current ones
+        function saveDetails(){
+            
+            //save storage
+            var first= document.getElementById("getfirstname").value;
+		    localStorage.setItem("FirstName",first);
+            
+            var last= document.getElementById("getlastname").value;
+		    localStorage.setItem("LastName",last);
+            
+            var date= document.getElementById("dateofbirth").value;
+		    localStorage.setItem("D.O.B",date);
+            
+            var mail= document.getElementById("email").value;
+		    localStorage.setItem("Email",mail);
+            
+            var phone= document.getElementById("phoneNum").value;
+		    localStorage.setItem("PhoneNumber",phone);
+            
+            var pw= document.getElementById("password").value;
+		    localStorage.setItem("Password",pw);
+            
+            var pwc= document.getElementById("confirm").value;
+		    localStorage.setItem("ConfirmPassword",pwc);
+            
+            //Address storage
+            var l1= document.getElementById("line1").value;
+		    localStorage.setItem("Address Line 1",l1);
+            
+            var l2= document.getElementById("line2").value;
+		    localStorage.setItem("Address Line 2",l2);
+            
+            var l3= document.getElementById("line3").value;
+		    localStorage.setItem("Address Line 3",l3);
+            
+            var c= document.getElementById("city").value;
+		    localStorage.setItem("Address City",c);
+
+            var cr= document.getElementById("country").value;
+		    localStorage.setItem("Address Country",cr);
+            
+             //payment storage
+            var cardnum= document.getElementById("cardnumber").value;
+		    localStorage.setItem("Payment Card Number",cardnum);
+            
+            var expiredate= document.getElementById("expirydate").value;
+		    localStorage.setItem("Payment Card Expiry",expiredate);
+
+            var owner= document.getElementById("cardowner").value;
+		    localStorage.setItem("Payment Card Owner",owner); 
+            
+            //other Information
+            var other= document.getElementById("otherinfo").value;
+		    localStorage.setItem("Other Information",other); 
+            
+        }
+		
+		//Email Validation
+		function checkEmail(inputvalue)
+			{	
+			var pattern=/^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
+			if(!pattern.test(inputvalue))
+			{         
+				alert("Not a valid Email Address");   
+			}
+		}
+		
+		//Phone number Validation
+		function phonenumber(inputP)  
+		{  
+			var phoneNo = /^\d{10}$/;  
+			if(!phoneNo.test(inputP))  
+			{  
+				alert("Not a valid Phone Number");   
+			}  
+		}
+
+		//check if logged in
+        function loggedIn() { 
+                var isLoggedIn = localStorage.getItem("LoggedIn");
+                
+                if (isLoggedIn=='true') {
+                    document.getElementById("accountlogin").text="ACCOUNT";
+                }
+                
+        }
+               
+                
+            
+    </script>
+
+</body>
+</html>
